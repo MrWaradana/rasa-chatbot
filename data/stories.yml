@@ -28,3 +28,48 @@ stories:
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye
+
+- story: basic food recommendation
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_food_recommendation
+  - action: utter_food_recommendation
+  - intent: choose_food
+    entities:
+    - food: "Nasi Padang"
+    - food: "Bakso"
+    - food: "Mie Ayam"
+    - food: "Ayam Geprek"
+    - food: "Rendang"
+  - action: utter_food_choice
+
+- story: drink recommendation
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_drink_recommendation
+  - action: utter_drink_recommendation
+
+- story: cuisine specific request
+  steps:
+  - intent: ask_specific_cuisine
+    entities:
+    - cuisine: "indonesia"
+  - action: action_recommend_by_cuisine
+  - intent: affirm
+  - action: utter_goodbye
+
+- story: mood based recommendation
+  steps:
+  - intent: ask_by_mood
+    entities:
+    - mood: "happy"
+  - action: action_recommend_by_mood
+
+- story: price range inquiry
+  steps:
+  - intent: ask_price_range
+    entities:
+    - price: "murah"
+  - action: action_recommend_by_price

@@ -11,3 +11,15 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: General food recommendation
+  steps:
+  - intent: ask_food_recommendation
+  - action: utter_food_recommendation
+
+- rule: General drink recommendation
+  steps:
+  - intent: ask_drink_recommendation
+  - action: utter_drink_recommendation
+
+

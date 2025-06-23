@@ -16,6 +16,12 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+    - halo
+    - hai
+    - selamat pagi
+    - hello
+    - hi
+    - permisi
 
 - intent: goodbye
   examples: |
@@ -29,6 +35,12 @@ nlu:
     - see you around
     - bye bye
     - see you later
+    - sampai jumpa
+    - bye
+    - terima kasih
+    - selesai
+    - dadah
+    - goodbye
 
 - intent: affirm
   examples: |
@@ -38,6 +50,12 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - ya
+    - iya
+    - betul
+    - yes
+    - benar
+    - oke
 
 - intent: deny
   examples: |
@@ -48,6 +66,11 @@ nlu:
     - don't like that
     - no way
     - not really
+    - tidak
+    - no
+    - gak
+    - bukan
+    - salah
 
 - intent: mood_great
   examples: |
@@ -89,3 +112,59 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+# makanan
+
+- intent: ask_food_recommendation
+  examples: |
+    - rekomendasikan makanan
+    - apa makanan yang enak
+    - saran makanan hari ini
+    - mau makan apa ya
+    - recommend food
+    - suggest food
+    - makanan apa yang bagus
+  
+
+- intent: ask_drink_recommendation
+  examples: |
+    - rekomendasikan minuman
+    - minuman apa yang segar
+    - suggest drink
+    - mau minum apa
+    - minuman yang enak
+    - recommend drink
+
+- intent: ask_specific_cuisine
+  examples: |
+    - makanan [indonesia](cuisine)
+    - masakan [chinese](cuisine)
+    - food [japanese](cuisine)
+    - [italian](cuisine) food
+    - makanan [western](cuisine)
+    - [korean](cuisine) food
+
+- intent: ask_by_mood
+  examples: |
+    - makanan untuk [happy](mood)
+    - food for [sad](mood)
+    - [hungry](mood) banget
+    - lagi [stress](mood)
+    - [tired](mood) mau makan
+    - [excited](mood) mood
+
+- intent: ask_healthy_food
+  examples: |
+    - makanan sehat
+    - healthy food
+    - diet food
+    - makanan rendah kalori
+    - nutritious food
+
+- intent: ask_price_range
+  examples: |
+    - makanan [murah](price)
+    - budget [20000](price)
+    - [sedang](price) range
+    - price [affordable](price)
+    - [mahal](price) restaurant
