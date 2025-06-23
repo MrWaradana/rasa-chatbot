@@ -5,3 +5,6 @@ venv
 .rasa
 rasa
 /rasa
+
+.tar.gz
+.zip

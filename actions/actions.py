@@ -7,6 +7,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
 
 class ActionRecommendByCuisine(Action):
@@ -68,10 +69,21 @@ class ActionRecommendByPrice(Action):
     def name(self) -> Text:
         return "action_recommend_by_price"
 
-    def run(self, dispatcher, tracker, domain):
+    def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
         price = tracker.get_slot("price_range")
 
-        # Fallback: ambil dari latest_message jika slot kosong
+        price_recommendations = {
+            "murah": "💰 Budget Friendly: Indomie Goreng (5K), Nasi Gudeg (15K), Bakso (10K), Es Teh (3K)",
+            "sedang": "💸 Medium Range: Ayam Geprek (25K), Nasi Padang (30K), Mie Ayam (20K)",
+            "mahal": "💎 Premium: Steak (150K), Sushi (200K), Fine Dining (300K+)",
+            "affordable": "👍 Affordable: Nasi Pecel (12K), Soto (15K), Gado-gado (18K)",
+        }
+
         if not price:
             text = tracker.latest_message.get("text", "").lower()
             if any(word in text for word in ["murah", "cheap"]):
@@ -81,5 +93,9 @@ class ActionRecommendByPrice(Action):
             elif any(word in text for word in ["mahal", "expensive"]):
                 price = "mahal"
 
-        # Rest of code...
+        message = price_recommendations.get(
+            price.lower(), "Berapa budget yang kamu punya? Murah, sedang, atau mahal?"
+        )
+        dispatcher.utter_message(text=message)
+
         return [SlotSet("price_range", price)] if price else []
